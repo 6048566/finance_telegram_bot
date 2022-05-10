@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class Currency(models.Model):
     class Meta:
@@ -29,7 +28,7 @@ class FinanceLog(models.Model):
         verbose_name_plural = 'finance logs'
 
     chat_id = models.CharField(max_length=20, blank=False, null=False, verbose_name='Chat ID')
-    category = models.ForeignKey(Category, blank=False, null=False, verbose_name='Category')
-    currency = models.ForeignKey(Currency, blank=False, null=False, verbose_name='Currency')
+    category = models.ForeignKey(Category, blank=False, null=False, on_delete=models.CASCADE, verbose_name='Category')
+    currency = models.ForeignKey(Currency, blank=False, null=False, on_delete=models.CASCADE, verbose_name='Currency')
     amount = models.DecimalField(max_digits=15, decimal_places=2, default=0.00, verbose_name='Amount')
     description = models.CharField(max_length=250, blank=True, null=True, verbose_name='Description')
